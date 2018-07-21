@@ -1,9 +1,6 @@
 FROM tss/oraclelinux-base
-ARG http_proxy
-ARG https_proxy
 
-LABEL Truck Service Systems Base ACCELL/SQL Image
-MAINTAINER TravelCenters of America
+MAINTAINER harkasubba
 
 # Add system dependencies
 RUN curl -O http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
