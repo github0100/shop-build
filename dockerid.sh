@@ -1,0 +1,5 @@
+DOCKER_CONTAINER_ID=`basename "$(cat /proc/1/cpuset)"`
+DOCKER_CONTAINER_SHORT_ID=`echo $DOCKER_CONTAINER_ID | cut -c -12`
+
+export DOCKER_CONTAINER_ID
+export DOCKER_CONTAINER_SHORT_ID

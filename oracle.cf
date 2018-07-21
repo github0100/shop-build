@@ -1,0 +1,153 @@
+######################################################################
+#	CONFIG FILE: 	unify.cf
+#	DESCRIPTION: 	Standard Unify Configuration File for Accell/Oracle
+#
+#	$Author: hearth $		$Date: 2002-02-09 18:39:48 $
+#	$Revision: 90.1 $	$State: Exp $
+#
+#	$Header: /mnt/asql/pgs/asqli/ORACLE/src/libsrc/unify.cf,v 90.1 2002-02-09 18:39:48 hearth Exp $
+#
+#	     UNIFY SOURCE CODE PROPRIETARY INFORMATION NOTICE
+#
+#	This configuration file is copyright 1989 by UNIFY Corporation.
+#	Use, duplication and disclosure subject to a Source
+#	Code License Agreement with UNIFY Corporation.
+#
+######################################################################
+
+# Read-only (non over-ridable from the environment) Indicator
+CONFIG_READONLY	= FALSE		# FALSE=certain variables may be over-ridden
+				# TRUE=only DBPATH & DBNAME may be over-ridden
+
+# UNIFY Data base Name
+DBTYPE		= "ORACLE"	# Data base type is Oracle RDBMS
+
+# System Language Types and Formats
+DATEFMT		= "MM/DD/YY"	# Date Format Mask
+CURRSYM         = "$"           # Currency Symbol
+TRIADSEP 	= ","           # Currency Triad Symbol
+RADIXSEP	= "."           # Currency Radix Symbol
+AMTPREC         = "2"           # Amount Precision
+
+
+# Operating System and Process Constraints
+PATH		= ".:/bin:/usr/bin" # executable pathname list
+SHELL		= "/bin/sh"	# default "shell" to use
+
+UNIFYTMP	= "/tmp"	# temporary directory name
+
+SPOOLER		= "lpr"		# spooler utility filename
+EDIT		= "vi"		# editor utility filename
+
+UNICAP		= "unicap"	# UNIFY Term Capabilities File
+
+
+# Data base Field Display Information
+NULLCH		= "*"		# Default Null Character (overridden below)
+# AMTNULLCH	= "*"		# Amount/Huge Amount-field Null Character
+# BOLNULLCH	= "*"		# Boolean-field Null Character
+# DATNULLCH	= "*"		# Date/Huge Date-field Null Character
+# FLTNULLCH	= "*"		# Float-field Null Character
+# NUMNULLCH	= "*"		# Numeric/Huge Numeric-field Null Character
+# STRNULLCH	= "*"		# String-field Null Character
+# TIMNULLCH	= "*"		# Time-field Null Character
+# TXTNULLCH	= "*"		# Text/Binary-field Null Character
+
+ERRCH		= "?"		# Default field-overflow/underflow/error char
+
+# Internationalization Information
+LANGDIR		= ""		# Current Language "Library" directory name
+INTLCHR		= "[]"		# default International Characters
+
+#
+# ACCELL configuration parameters
+#
+
+# ACLENV	=         	# path to accell environment
+				# defaults to $DBPATH/aclenv if not set
+# APPMAP	=		# no default if not used; Otherwise contains
+				# ACLPATH and DBPATH to various applications.
+# TERM		= 		# no default: TERM used for AMGR, AGEN
+# ATERMCAP	=		# no default: Accell termcap file.
+# TERMCAP	=		# no default: Termcap file if ATERMCAP not set
+# SPOOLDEV	= 		# ACCELL/CP spool device
+# CPPORT	= 		# ACCELL/CP used for debugging
+# ACPMODE	= 		# ACCELL/CP mode on/off
+# UTMPCNT	=		# ACCELL/CP used by the enabler
+
+ACLPATH		= .		# default path to accell application
+
+EXPL_MODE	= FALSE		# explicit mode for string searches in AMGR
+AMGR_INI_M_SZ 	= 64k		# AMGR init memory size
+AMGR_ERFL	= /dev/null	# AMGR error file
+AGEN_ERFL	= /dev/null	# AGEN error file
+AMGR_HPSZ	= 65536		# AMGR heap size
+AGEN_HPSZ	= 32768		# AGEN heap size
+AMGR_SEL_SET_DR = /usr/tmp	# AMGR selected set directory
+AGEN_SEL_SET_DR = /usr/tmp	# AGEN selected set directory
+AMGR_NUM_WDWS 	= 128		# AMGR number of windows
+AMGR_STK_B_SZ 	= 32768		# AMGR stack block size
+DELIMFLD	= TRUE		# AMGR reverse video on/off for field
+FKEYGAPS	= TRUE		# AMGR :Do we need function key gaps or not?
+OPNARCHS	= 5		# AMGR number of open archives
+PAGELN		= 66		# FRMDOC/frmlst page length
+FLTFMT		= "%g"		# default float format for AMGR
+ACLSCROLL       = PAGE          # AMGR/AGEN multi-occurrence selected set
+                                # scrolling mode.  PAGE or LINE
+ACLTXTNONDSPCH  = "\^"          # non displayable character
+ACLMXOPNVARF    = 5		# max open variable length data files
+ACLVARDIR	= /usr/tmp	# variable length data file directory
+ACLVARMEMLIM	= 1024		# variable length data in memory limit
+
+#
+# function/form cache sizes (in # bytes (e.g. 30k), -1 = unlimited,
+#                             0 = no caching)
+AMGR_FUNC_CA_SZ = -1            # global funcion cache size in # bytes
+AMGR_FORM_CA_SZ = 0             # form cache size in # bytes
+
+
+AMGR_MAPID	= FALSE         # AMGR: perform id mapping (schema checking)
+
+OSEC2WAIT	= 0		# Number of seconds to wait until we assume
+				# the row is locked.  0 means wait forever.
+
+DFLTVCMEM       = 10k           # default virtual cursor memory limit
+
+
+#
+# Accell/CP Configuration Variables
+#
+INSTRUMT	= FALSE		# ACCELL/CP used for gathering statistics
+INSTTTY		= stdout	# ACCELL/CP used for gathering statistics
+
+#
+# Presentation mode configuration variable.
+#
+ACLPRESMODE     = "CHARACTER"   # character terminal.
+
+#
+# Command executed by the system$() function.
+#
+UXSYSTEM        = "xterm -g 80x24 -fn 9x15 -fb 9x15bold -e sh -c"
+
+#
+# GUI Manager (XOLAMGR, XMAMGR) library link specifications.
+#       Used by amgr.ld, asqli.ld.
+#
+#       Path to libraries may be set via adding a -L<pathname> component
+#       in M_LIBS/OL_LIBS as follows:
+#
+#       Suggested 040892:
+#               M_LIBS = "-L/usr/localnet/sun4/motif.1.1.3/lib -lXm -lXt -lX11"
+#               OL_LIBS = "-L/usr/localnet/sun4/owv3/lib -lXol -lXt -lX11"
+#
+#       See documentation/release-notes for further details.
+#
+M_LIBS          = "-lXm -lXt -lX11"
+
+# Compiler/Linker Parameters
+ULDFLAGS	= "-Bstatic"    # System load flags for uld
+ULDLIBS		= "-lm -ldl"     # System load libraries for uld
+
+UAMOUNT64   = FALSE
+UNUMERIC64  = TRUE
